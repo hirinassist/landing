@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>中高齡二度就業</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5E6CE;
+    --orange: #E8833A;
+    --orange-dark: #C86A20;
+    --red: #C0392B;
+    --teal: #4A7C7E;
+    --brown: #7D5A3C;
+    --text: #2C1A0E;
+    --text-light: #6B4C2A;
+    --white: #FFFDF8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    max-width: 480px;
+    margin: 0 auto;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(160deg, #FDF0DC 0%, #F5E0B8 60%, #EECF99 100%);
+    padding: 52px 28px 44px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(232,131,58,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: var(--orange);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 5px 18px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 34px;
+    font-weight: 900;
+    color: var(--red);
+    line-height: 1.25;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--brown);
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--orange);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 16px 44px;
+    border-radius: 50px;
+    text-decoration: none;
+    letter-spacing: 2px;
+    box-shadow: 0 6px 24px rgba(232,131,58,0.40);
+    transition: transform .15s, box-shadow .15s;
+    border: 2px solid var(--orange-dark);
+  }
+  .cta-btn:active { transform: scale(0.97); box-shadow: 0 3px 12px rgba(232,131,58,.35); }
+
+  /* ── ILLUSTRATION BAND ── */
+  .img-band {
+    background: var(--orange);
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  .img-band img {
+    width: 100%;
+    max-width: 480px;
+    display: block;
+  }
+
+  /* ── SECTION BASE ── */
+  section {
+    padding: 44px 28px;
+  }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 16px;
+  }
+
+  .section-body {
+    font-size: 16px;
+    color: var(--text-light);
+    line-height: 1.8;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 3px;
+    background: linear-gradient(90deg, var(--orange), var(--cream));
+    margin: 0 28px;
+    border-radius: 2px;
+  }
+
+  /* ── FEATURES ── */
+  .features {
+    background: var(--white);
+  }
+
+  .feature-list {
+    list-style: none;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .feature-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--cream);
+    border-radius: 14px;
+    padding: 16px 18px;
+  }
+
+  .feat-icon {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    background: var(--orange);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+  }
+
+  .feat-text strong {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 3px;
+  }
+
+  .feat-text span {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  /* ── STEPS ── */
+  .steps {
+    background: linear-gradient(170deg, #FDF0DC, #F0D9AF);
+  }
+
+  .step-list {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+
+  .step-list::before {
+    content: '';
+    position: absolute;
+    left: 22px; top: 28px; bottom: 28px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--orange), transparent);
+  }
+
+  .step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 14px 0;
+  }
+
+  .step-num {
+    width: 44px; height: 44px;
+    min-width: 44px;
+    background: var(--orange);
+    color: #fff;
+    border-radius: 50%;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    box-shadow: 0 2px 8px rgba(232,131,58,.35);
+  }
+
+  .step-content strong {
+    display: block;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 3px;
+    padding-top: 10px;
+  }
+
+  .step-content span {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  /* ── TESTIMONIAL ── */
+  .testimonial {
+    background: var(--white);
+  }
+
+  .testimonial-cards {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .t-card {
+    background: var(--cream);
+    border-radius: 16px;
+    padding: 20px;
+    border-left: 4px solid var(--orange);
+  }
+
+  .t-quote {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+
+  .t-author {
+    font-size: 13px;
+    color: var(--text-light);
+    font-weight: 600;
+  }
+
+  /* ── FINAL CTA ── */
+  .final-cta {
+    background: var(--orange);
+    padding: 52px 28px;
+    text-align: center;
+  }
+
+  .final-cta h2 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 26px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+
+  .final-cta p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.88);
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+
+  .cta-btn-white {
+    display: inline-block;
+    background: #fff;
+    color: var(--orange-dark);
+    font-size: 18px;
+    font-weight: 700;
+    padding: 16px 44px;
+    border-radius: 50px;
+    text-decoration: none;
+    letter-spacing: 2px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+    border: 2px solid rgba(255,255,255,0.4);
+    transition: transform .15s;
+  }
+  .cta-btn-white:active { transform: scale(0.97); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text);
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    padding: 20px 28px;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  /* Fade-in animation */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- ① HERO -->
+<section class="hero">
+  <div class="hero-tag">中高齡 ✦ 二度就業</div>
+  <h1>無論幾歲<br>職場都為您開</h1>
+  <p class="hero-sub">友善企業多樣職缺<br>專為中高齡設計的就業平台</p>
+  <a href="https://line.me/ti/p/EwkmUKAbdg" class="cta-btn">立即免費諮詢</a>
+</section>
+
+<!-- ② 主視覺圖 -->
+<div class="img-band">
+  <img src="https://i.ibb.co/SwYTZRnK/photo-2026-03-15-13-08-43.jpg" alt="中高齡就業示意圖">
+</div>
+
+<div class="divider"></div>
+
+<!-- ③ 我們能幫你什麼 -->
+<section class="features fade-up">
+  <p class="section-label">我們的服務</p>
+  <h2 class="section-title">為中高齡量身打造<br>的就業支援</h2>
+  <ul class="feature-list">
+    <li>
+      <div class="feat-icon">🏢</div>
+      <div class="feat-text">
+        <strong>友善企業媒合</strong>
+        <span>嚴選尊重資深工作者的合作企業</span>
+      </div>
+    </li>
+    <li>
+      <div class="feat-icon">📋</div>
+      <div class="feat-text">
+        <strong>多樣職缺選擇</strong>
+        <span>全職、兼職、彈性班次任你選</span>
+      </div>
+    </li>
+    <li>
+      <div class="feat-icon">🤝</div>
+      <div class="feat-text">
+        <strong>專人一對一輔導</strong>
+        <span>從履歷到面試，全程陪你準備</span>
+      </div>
+    </li>
+    <li>
+      <div class="feat-icon">📈</div>
+      <div class="feat-text">
+        <strong>技能再培訓</strong>
+        <span>免費課程協助您更新職場技能</span>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<div class="divider"></div>
+
+<!-- ④ 如何開始 -->
+<section class="steps fade-up">
+  <p class="section-label">加入步驟</p>
+  <h2 class="section-title">三步驟<br>重返職場</h2>
+  <div class="step-list">
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <strong>加LINE免費諮詢</strong>
+        <span>告訴我們您的期望工作與時間需求</span>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <strong>專人為您媒合</strong>
+        <span>依據您的條件推薦最合適的職缺</span>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <strong>順利上工</strong>
+        <span>上工後仍有專人持續關心您的狀況</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ⑤ 真實案例 -->
+<section class="testimonial fade-up">
+  <p class="section-label">成功案例</p>
+  <h2 class="section-title">他們重新找到<br>工作的意義</h2>
+  <div class="testimonial-cards">
+    <div class="t-card">
+      <p class="t-quote">「退休後本來以為找工作很難，沒想到一個月內就順利上班，工作環境也很友善。」</p>
+      <p class="t-author">李女士・58歲・超市服務員</p>
+    </div>
+    <div class="t-card">
+      <p class="t-quote">「彈性班次讓我可以兼顧家庭，薪水也很穩定，真的很感謝這個平台。」</p>
+      <p class="t-author">陳先生・62歲・倉儲作業員</p>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ FINAL CTA -->
+<section class="final-cta">
+  <h2>立即諮詢<br>找到屬於您的舞台</h2>
+  <p>完全免費・無壓力・專人服務</p>
+  <a href="https://line.me/ti/p/EwkmUKAbdg" class="cta-btn-white">立即免費諮詢</a>
+</section>
+
+<footer>
+  © 2026 中高齡就業服務平台<br>本服務完全免費，請放心諮詢
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
